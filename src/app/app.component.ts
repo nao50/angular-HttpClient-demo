@@ -20,7 +20,6 @@ export class AppComponent {
     this.dataService.getDataResponse()
     .subscribe(
       response => {
-      // display its headers
       console.log('response: ', response);
       this.data = response.body;
       const keys = response.headers.keys();
@@ -33,7 +32,7 @@ export class AppComponent {
         // case 400:
         // case 401:
         default:
-          // console.log('error: ', error);
+          console.log('error: ', error);
           break;
       }
     }
