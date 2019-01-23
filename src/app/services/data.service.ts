@@ -4,13 +4,14 @@ import { HttpClient, HttpResponse, HttpErrorResponse } from '@angular/common/htt
 import { Observable, throwError, of, timer, interval } from 'rxjs';
 import { catchError, retryWhen, timeout } from 'rxjs/operators';
 
-import { Data } from '../models/data.model';
+import { Data, ChartData } from '../models/data.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
-  dataUrl = 'assets/data2.json';
+  dataUrl = 'assets/data.json';
+  chartDataUrl = 'assets/chartdata.json';
 
   constructor(
     private http: HttpClient,
@@ -18,6 +19,14 @@ export class DataService {
 
   getDataResponse(): Observable<HttpResponse<Data>> {
     return this.http.get<Data>(this.dataUrl, { observe: 'response' })
+    .pipe(
+      timeout(2500),
+      catchError(this.handleError),
+    );
+  }
+
+  getChartDataResponse(): Observable<HttpResponse<ChartData[]>> {
+    return this.http.get<ChartData[]>(this.chartDataUrl, { observe: 'response' })
     .pipe(
       timeout(2500),
       catchError(this.handleError),

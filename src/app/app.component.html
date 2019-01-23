@@ -1,7 +1,16 @@
 
-key1: {{ data?.key1 }}
-key2: {{ data?.key2 }}
+
+key1: {{ jsonData?.key1 }}
+key2: {{ jsonData?.key2 }}
 
 <button mat-raised-button color="primary" (click)="getData()">Get Data</button>
+
+<div style="width:70%;">
+	<canvas #mycanvas01></canvas>
+</div>
+
+<div style="width:50%;">
+	<canvas #mycanvas02></canvas>
+</div>
 
 <router-outlet></router-outlet>

@@ -3,3 +3,7 @@ export interface Data {
     key2: string;
 }
 
+export interface ChartData {
+    x: number;
+    y: number;
+}
