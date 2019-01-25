@@ -4,6 +4,7 @@ import { DataService } from './services/data.service';
 import { Data, ChartData } from './models/data.model';
 
 import { Chart } from 'chart.js';
+import * as L from 'leaflet';
 
 @Component({
   selector: 'app-root',
@@ -13,6 +14,7 @@ import { Chart } from 'chart.js';
 export class AppComponent implements OnInit, AfterViewInit {
   jsonData: Data;
   chartData: ChartData[];
+  map: any;
 
   context01: CanvasRenderingContext2D;
   context02: CanvasRenderingContext2D;
@@ -26,6 +28,16 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.getChartData();
+
+    this.map = L.map('map').setView([34.702485, 135.495951], 13);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(this.map);
+
+    L.marker([34.702485, 135.495951]).bindPopup('<b>Hello world!</b><br>I am a popup.').addTo(this.map);
+
+    L.circle([34.702486, 135.495952], { color: 'red', fillColor: '#f03', fillOpacity: 0.5, radius: 500}).addTo(this.map);
   }
 
   ngAfterViewInit() {
