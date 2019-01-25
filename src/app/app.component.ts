@@ -38,6 +38,15 @@ export class AppComponent implements OnInit, AfterViewInit {
     L.marker([34.702485, 135.495951]).bindPopup('<b>Hello world!</b><br>I am a popup.').addTo(this.map);
 
     L.circle([34.702486, 135.495952], { color: 'red', fillColor: '#f03', fillOpacity: 0.5, radius: 500}).addTo(this.map);
+
+    L.polyline([
+      [34.702495, 135.495961],
+      [34.712525, 135.505991],
+  ], {
+      'color': '#FF0000',
+      'weight': 5,
+      'opacity': 0.6
+  }).addTo(this.map);
   }
 
   ngAfterViewInit() {
