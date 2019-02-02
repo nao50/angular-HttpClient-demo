@@ -174,7 +174,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     let mycanvas04= new Chart(this.context04, {
       type: 'line',
       data: {
-        label: 'sample1 (dist: linear)',
+        // label: 'sample1 (dist: linear)',
         datasets: [{
         label: 'sample1',
         data: [{
